@@ -56,6 +56,11 @@
 		1AED84251D6EE310009A80CE /* YSCButterflyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED84241D6EE310009A80CE /* YSCButterflyViewController.m */; };
 		1AED84281D6EE558009A80CE /* butterfly1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED84261D6EE558009A80CE /* butterfly1.png */; };
 		1AED84291D6EE558009A80CE /* butterfly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED84271D6EE558009A80CE /* butterfly2.png */; };
+		E1B2702F1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B2702E1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m */; };
+		E1B270331D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B270321D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.m */; };
+		E1B270371D72D89200A41480 /* YSCMatrixCircleAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B270361D72D89200A41480 /* YSCMatrixCircleAnimationView.m */; };
+		E1B2703A1D72E83900A41480 /* YSCCircleRippleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B270391D72E83900A41480 /* YSCCircleRippleView.m */; };
+		E1B2703D1D72EB8800A41480 /* YSCCircleRippleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B2703C1D72EB8800A41480 /* YSCCircleRippleViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +162,16 @@
 		1AED84241D6EE310009A80CE /* YSCButterflyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCButterflyViewController.m; sourceTree = "<group>"; };
 		1AED84261D6EE558009A80CE /* butterfly1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = butterfly1.png; sourceTree = "<group>"; };
 		1AED84271D6EE558009A80CE /* butterfly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = butterfly2.png; sourceTree = "<group>"; };
+		E1B2702D1D72D1A800A41480 /* YSCReplicatorAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCReplicatorAnimationViewController.h; sourceTree = "<group>"; };
+		E1B2702E1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCReplicatorAnimationViewController.m; sourceTree = "<group>"; };
+		E1B270311D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCCircleReplicatorAnimationViewController.h; sourceTree = "<group>"; };
+		E1B270321D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCCircleReplicatorAnimationViewController.m; sourceTree = "<group>"; };
+		E1B270351D72D89200A41480 /* YSCMatrixCircleAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCMatrixCircleAnimationView.h; sourceTree = "<group>"; };
+		E1B270361D72D89200A41480 /* YSCMatrixCircleAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCMatrixCircleAnimationView.m; sourceTree = "<group>"; };
+		E1B270381D72E83900A41480 /* YSCCircleRippleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCCircleRippleView.h; sourceTree = "<group>"; };
+		E1B270391D72E83900A41480 /* YSCCircleRippleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCCircleRippleView.m; sourceTree = "<group>"; };
+		E1B2703B1D72EB8800A41480 /* YSCCircleRippleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCCircleRippleViewController.h; sourceTree = "<group>"; };
+		E1B2703C1D72EB8800A41480 /* YSCCircleRippleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCCircleRippleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +240,7 @@
 				1AED83E31D6D8E7F009A80CE /* YSCWaterWaveViewController.m */,
 				1AED83EE1D6D9D9E009A80CE /* YSCSeaWaterWaveViewController.h */,
 				1AED83EF1D6D9D9E009A80CE /* YSCSeaWaterWaveViewController.m */,
+				E1B270301D72D2E200A41480 /* replicator */,
 				1AED84221D6EE23F009A80CE /* emitter */,
 				1AED83F11D6DBA87009A80CE /* maskAnimationController */,
 				1AED83321D6A89E1009A80CE /* YSCAnimation */,
@@ -275,6 +291,7 @@
 				1AED83C81D6D43C4009A80CE /* microPhoneWave */,
 				1AED83DE1D6D8E02009A80CE /* waterWave */,
 				1AED83E51D6D9D10009A80CE /* seaWaterWave */,
+				E1B270341D72D66D00A41480 /* replicator */,
 			);
 			name = YSCAnimation;
 			path = ../../YSCAnimation;
@@ -432,6 +449,30 @@
 			name = emitter;
 			sourceTree = "<group>";
 		};
+		E1B270301D72D2E200A41480 /* replicator */ = {
+			isa = PBXGroup;
+			children = (
+				E1B2702D1D72D1A800A41480 /* YSCReplicatorAnimationViewController.h */,
+				E1B2702E1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m */,
+				E1B270311D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.h */,
+				E1B270321D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.m */,
+				E1B2703B1D72EB8800A41480 /* YSCCircleRippleViewController.h */,
+				E1B2703C1D72EB8800A41480 /* YSCCircleRippleViewController.m */,
+			);
+			name = replicator;
+			sourceTree = "<group>";
+		};
+		E1B270341D72D66D00A41480 /* replicator */ = {
+			isa = PBXGroup;
+			children = (
+				E1B270351D72D89200A41480 /* YSCMatrixCircleAnimationView.h */,
+				E1B270361D72D89200A41480 /* YSCMatrixCircleAnimationView.m */,
+				E1B270381D72E83900A41480 /* YSCCircleRippleView.h */,
+				E1B270391D72E83900A41480 /* YSCCircleRippleView.m */,
+			);
+			path = replicator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -585,6 +626,9 @@
 				1AED83AA1D6C76D7009A80CE /* YSCMaskAnimationViewController.m in Sources */,
 				1AED84181D6ED78E009A80CE /* YSCEmitterAnimationViewController.m in Sources */,
 				1AED83E41D6D8E7F009A80CE /* YSCWaterWaveViewController.m in Sources */,
+				E1B2702F1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m in Sources */,
+				E1B270331D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.m in Sources */,
+				E1B2703D1D72EB8800A41480 /* YSCCircleRippleViewController.m in Sources */,
 				1AED83BB1D6D4284009A80CE /* YSCVoiceWaveViewController.m in Sources */,
 				1AED834A1D6AA455009A80CE /* YSCWaveAnimationViewController.m in Sources */,
 				1AED84251D6EE310009A80CE /* YSCButterflyViewController.m in Sources */,
@@ -593,6 +637,7 @@
 				1AED83DA1D6D4482009A80CE /* YSCVoiceLoadingCircleView.m in Sources */,
 				1AED83DC1D6D4482009A80CE /* YSCVolumeQueue.m in Sources */,
 				1AED84021D6DBBCC009A80CE /* YSCWaveView.m in Sources */,
+				E1B270371D72D89200A41480 /* YSCMatrixCircleAnimationView.m in Sources */,
 				1AED83071D6A899B009A80CE /* ViewController.m in Sources */,
 				1AED83041D6A899B009A80CE /* AppDelegate.m in Sources */,
 				1AED84081D6DD252009A80CE /* YSCCircleLoadAnimationView.m in Sources */,
@@ -605,6 +650,7 @@
 				1AED83FD1D6DBBA7009A80CE /* YSCFanShapedView.m in Sources */,
 				1AED83AD1D6C7943009A80CE /* YSCMicrophoneWaveViewController.m in Sources */,
 				1AED84211D6EE232009A80CE /* YSCFireViewController.m in Sources */,
+				E1B2703A1D72E83900A41480 /* YSCCircleRippleView.m in Sources */,
 				1AED83F01D6D9D9E009A80CE /* YSCSeaWaterWaveViewController.m in Sources */,
 				1AED833A1D6A8AAF009A80CE /* YSCLayerAnimationViewController.m in Sources */,
 				1AED83DB1D6D4482009A80CE /* YSCVoiceWaveView.m in Sources */,

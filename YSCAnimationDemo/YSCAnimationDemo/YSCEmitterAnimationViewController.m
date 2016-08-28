@@ -22,7 +22,7 @@ static NSString * const YSCCellDataClass    = @"YSCCellDataClass";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Mask Animation Demo";
+    self.title = @"Emitter Animation Demo";
     self.cellDataArray = [NSMutableArray array];
     [self initCellDates];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];

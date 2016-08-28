@@ -1,14 +1,14 @@
 //
-//  YSCAnimationDemoViewController.m
-//  AnimationLearn
+//  YSCReplicatorAnimationViewController.m
+//  YSCAnimationDemo
 //
-//  Created by yushichao on 16/8/19.
-//  Copyright © 2016年 yushichao. All rights reserved.
+//  Created by 工作号 on 16/8/28.
+//  Copyright © 2016年 YSC. All rights reserved.
 //
 
-#import "YSCAnimationDemoViewController.h"
+#import "YSCReplicatorAnimationViewController.h"
 
-@interface YSCAnimationDemoViewController ()
+@interface YSCReplicatorAnimationViewController ()
 
 @property (nonatomic, strong) NSMutableArray *cellDataArray;
 @end
@@ -16,12 +16,12 @@
 static NSString * const YSCCellDataName     = @"YSCCellDataName";
 static NSString * const YSCCellDataClass    = @"YSCCellDataClass";
 
-@implementation YSCAnimationDemoViewController
+@implementation YSCReplicatorAnimationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Animation Demo";
+    self.title = @"Replicator Animation Demo";
     self.cellDataArray = [NSMutableArray array];
     [self initCellDates];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
@@ -34,15 +34,8 @@ static NSString * const YSCCellDataClass    = @"YSCCellDataClass";
 
 - (void)initCellDates
 {
-    [_cellDataArray addObject:@{YSCCellDataName:@"Layer animation", YSCCellDataClass:@"YSCLayerAnimationViewController"}];
-    [_cellDataArray addObject:@{YSCCellDataName:@"ripple animation", YSCCellDataClass:@"YSCRippleAnimationViewController"}];
-    [_cellDataArray addObject:@{YSCCellDataName:@"wave animation", YSCCellDataClass:@"YSCWaveAnimationViewController"}];
-    [_cellDataArray addObject:@{YSCCellDataName:@"mask animation", YSCCellDataClass:@"YSCMaskAnimationViewController"}];
-    [_cellDataArray addObject:@{YSCCellDataName:@"voiceWave animation", YSCCellDataClass:@"YSCVoiceWaveViewController"}];
-    [_cellDataArray addObject:@{YSCCellDataName:@"waterWave animation", YSCCellDataClass:@"YSCWaterWaveViewController"}];
-    [_cellDataArray addObject:@{YSCCellDataName:@"seawaterWave animation", YSCCellDataClass:@"YSCSeaWaterWaveViewController"}];
-    [_cellDataArray addObject:@{YSCCellDataName:@"emitter animation", YSCCellDataClass:@"YSCEmitterAnimationViewController"}];
-    [_cellDataArray addObject:@{YSCCellDataName:@"replicator animation", YSCCellDataClass:@"YSCReplicatorAnimationViewController"}];
+    [_cellDataArray addObject:@{YSCCellDataName:@"matrix animation", YSCCellDataClass:@"YSCCircleReplicatorAnimationViewController"}];
+    [_cellDataArray addObject:@{YSCCellDataName:@"ripple animation", YSCCellDataClass:@"YSCCircleRippleViewController"}];
 }
 
 #pragma mark - Table view data source
@@ -85,5 +78,6 @@ static NSString * const YSCCellDataClass    = @"YSCCellDataClass";
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 
 @end
