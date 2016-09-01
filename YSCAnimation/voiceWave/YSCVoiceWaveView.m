@@ -30,6 +30,7 @@
 #define voiceWaveDisappearDuration 0.25
 
 NSString * const animationType = @"animationType";
+static NSRunLoop *_voiceWaveRunLoop;
 
 @implementation YSCVoiceWaveView {
     CGFloat _idleAmplitude;//最小振幅
@@ -67,6 +68,15 @@ NSString * const animationType = @"animationType";
     [_displayLink invalidate];
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self startVoiceWaveThread];
+    }
+    return self;
+}
+
 - (void)setup
 {    
     _frequency1 = 2.0f;
@@ -99,6 +109,31 @@ NSString * const animationType = @"animationType";
     _stopAnimationRatio = 1.0;
     
     [_volumeQueue cleanQueue];
+}
+
+- (void)voiceWaveThreadEntryPoint:(id)__unused object
+{
+    @autoreleasepool {
+        [[NSThread currentThread] setName:@"com.ysc.VoiceWave"];
+        _voiceWaveRunLoop = [NSRunLoop currentRunLoop];
+        [_voiceWaveRunLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+        [_voiceWaveRunLoop run];
+    }
+}
+
+- (NSThread *)startVoiceWaveThread
+{
+    static NSThread *_voiceWaveThread = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _voiceWaveThread =
+        [[NSThread alloc] initWithTarget:self
+                                selector:@selector(voiceWaveThreadEntryPoint:)
+                                  object:nil];
+        [_voiceWaveThread start];
+    });
+    
+    return _voiceWaveThread;
 }
 
 - (void)showInParentView:(UIView *)parentView
@@ -139,9 +174,19 @@ NSString * const animationType = @"animationType";
         return;
     }
     [self setup];
-    [self.displayLink invalidate];
-    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(invokeWaveCallback)];
-    [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    if (_voiceWaveRunLoop) {
+        [self.displayLink invalidate];
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(invokeWaveCallback)];
+        [self.displayLink addToRunLoop:_voiceWaveRunLoop forMode:NSRunLoopCommonModes];
+    } else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (_voiceWaveRunLoop) {
+                [self.displayLink invalidate];
+                self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(invokeWaveCallback)];
+                [self.displayLink addToRunLoop:_voiceWaveRunLoop forMode:NSRunLoopCommonModes];
+            }
+        });
+    }
 }
 
 - (void)stopVoiceWaveWithShowLoadingViewCallback:(YSCShowLoadingCircleCallback)showLoadingCircleCallback
@@ -217,15 +262,17 @@ NSString * const animationType = @"animationType";
     }
     
     UIBezierPath *firstLayerPath = [self generateBezierPathWithFrequency:_frequency1 maxAmplitude:_maxAmplitude phase:_phase1 lineCenter:&_lineCenter1];
-    _firstShapeLayer.path = firstLayerPath.CGPath;
     UIBezierPath *secondLayerPath = [self generateBezierPathWithFrequency:_frequency2 maxAmplitude:_maxAmplitude*0.8 phase:_phase2 + 3 lineCenter:&_lineCenter2];
-    _secondShapeLayer.path = secondLayerPath.CGPath;
-    if (firstLayerPath && secondLayerPath) {
-        UIBezierPath *fillPath = [UIBezierPath bezierPathWithCGPath:firstLayerPath.CGPath];
-        [fillPath appendPath:secondLayerPath];
-        [fillPath closePath];
-        _fillShapeLyer.path = fillPath.CGPath;
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _firstShapeLayer.path = firstLayerPath.CGPath;
+        _secondShapeLayer.path = secondLayerPath.CGPath;
+        if (firstLayerPath && secondLayerPath) {
+            UIBezierPath *fillPath = [UIBezierPath bezierPathWithCGPath:firstLayerPath.CGPath];
+            [fillPath appendPath:secondLayerPath];
+            [fillPath closePath];
+            _fillShapeLyer.path = fillPath.CGPath;
+        }
+    });
 }
 
 #pragma mark - CAAnimationDelegate

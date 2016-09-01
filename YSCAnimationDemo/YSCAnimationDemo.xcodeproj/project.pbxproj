@@ -199,6 +199,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A46E6491D7823DC00C11542 /* water wave */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "water wave";
+			sourceTree = "<group>";
+		};
+		1A46E64A1D7823E100C11542 /* voice wave */ = {
+			isa = PBXGroup;
+			children = (
+				1AED83B91D6D4284009A80CE /* YSCVoiceWaveViewController.h */,
+				1AED83BA1D6D4284009A80CE /* YSCVoiceWaveViewController.m */,
+			);
+			name = "voice wave";
+			sourceTree = "<group>";
+		};
+		1A46E64B1D7823E400C11542 /* ripple */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ripple;
+			sourceTree = "<group>";
+		};
+		1A46E64C1D7823E800C11542 /* custom wave */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "custom wave";
+			sourceTree = "<group>";
+		};
+		1A46E64D1D7823EB00C11542 /* custom */ = {
+			isa = PBXGroup;
+			children = (
+				1AED83351D6A8AAF009A80CE /* YSCLayerAnimationViewController.h */,
+				1AED83361D6A8AAF009A80CE /* YSCLayerAnimationViewController.m */,
+			);
+			name = custom;
+			sourceTree = "<group>";
+		};
+		1A46E64E1D7823F300C11542 /* seawater */ = {
+			isa = PBXGroup;
+			children = (
+				1AED83EE1D6D9D9E009A80CE /* YSCSeaWaterWaveViewController.h */,
+				1AED83EF1D6D9D9E009A80CE /* YSCSeaWaterWaveViewController.m */,
+			);
+			name = seawater;
+			sourceTree = "<group>";
+		};
+		1A46E64F1D78249300C11542 /* Demo controller */ = {
+			isa = PBXGroup;
+			children = (
+				1A46E64D1D7823EB00C11542 /* custom */,
+				1A46E64C1D7823E800C11542 /* custom wave */,
+				1AED83481D6AA455009A80CE /* YSCWaveAnimationViewController.h */,
+				1AED83491D6AA455009A80CE /* YSCWaveAnimationViewController.m */,
+				1A46E64B1D7823E400C11542 /* ripple */,
+				1AED83421D6AA24F009A80CE /* YSCRippleAnimationViewController.h */,
+				1AED83431D6AA24F009A80CE /* YSCRippleAnimationViewController.m */,
+				1A46E64A1D7823E100C11542 /* voice wave */,
+				1A46E6491D7823DC00C11542 /* water wave */,
+				1AED83E21D6D8E7F009A80CE /* YSCWaterWaveViewController.h */,
+				1AED83E31D6D8E7F009A80CE /* YSCWaterWaveViewController.m */,
+				1A46E64E1D7823F300C11542 /* seawater */,
+				E1B270301D72D2E200A41480 /* replicator */,
+				1AED84221D6EE23F009A80CE /* emitter */,
+				1AED83F11D6DBA87009A80CE /* maskAnimation */,
+			);
+			name = "Demo controller";
+			sourceTree = "<group>";
+		};
 		1AED82F31D6A899B009A80CE = {
 			isa = PBXGroup;
 			children = (
@@ -228,21 +298,7 @@
 				1AED83061D6A899B009A80CE /* ViewController.m */,
 				1AED83331D6A8AAF009A80CE /* YSCAnimationDemoViewController.h */,
 				1AED83341D6A8AAF009A80CE /* YSCAnimationDemoViewController.m */,
-				1AED83351D6A8AAF009A80CE /* YSCLayerAnimationViewController.h */,
-				1AED83361D6A8AAF009A80CE /* YSCLayerAnimationViewController.m */,
-				1AED83421D6AA24F009A80CE /* YSCRippleAnimationViewController.h */,
-				1AED83431D6AA24F009A80CE /* YSCRippleAnimationViewController.m */,
-				1AED83481D6AA455009A80CE /* YSCWaveAnimationViewController.h */,
-				1AED83491D6AA455009A80CE /* YSCWaveAnimationViewController.m */,
-				1AED83B91D6D4284009A80CE /* YSCVoiceWaveViewController.h */,
-				1AED83BA1D6D4284009A80CE /* YSCVoiceWaveViewController.m */,
-				1AED83E21D6D8E7F009A80CE /* YSCWaterWaveViewController.h */,
-				1AED83E31D6D8E7F009A80CE /* YSCWaterWaveViewController.m */,
-				1AED83EE1D6D9D9E009A80CE /* YSCSeaWaterWaveViewController.h */,
-				1AED83EF1D6D9D9E009A80CE /* YSCSeaWaterWaveViewController.m */,
-				E1B270301D72D2E200A41480 /* replicator */,
-				1AED84221D6EE23F009A80CE /* emitter */,
-				1AED83F11D6DBA87009A80CE /* maskAnimationController */,
+				1A46E64F1D78249300C11542 /* Demo controller */,
 				1AED83321D6A89E1009A80CE /* YSCAnimation */,
 				1AED833F1D6A8D66009A80CE /* Resource */,
 				1AED830B1D6A899B009A80CE /* Assets.xcassets */,
@@ -374,7 +430,7 @@
 			path = Shaders;
 			sourceTree = "<group>";
 		};
-		1AED83F11D6DBA87009A80CE /* maskAnimationController */ = {
+		1AED83F11D6DBA87009A80CE /* maskAnimation */ = {
 			isa = PBXGroup;
 			children = (
 				1AED83A81D6C76D7009A80CE /* YSCMaskAnimationViewController.h */,
@@ -386,7 +442,7 @@
 				1AED83B61D6D3348009A80CE /* YSCFanshapedViewController.h */,
 				1AED83B71D6D3348009A80CE /* YSCFanshapedViewController.m */,
 			);
-			name = maskAnimationController;
+			name = maskAnimation;
 			sourceTree = "<group>";
 		};
 		1AED83F21D6DBAED009A80CE /* microphoneWave */ = {
