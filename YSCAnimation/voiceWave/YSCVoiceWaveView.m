@@ -61,6 +61,9 @@ static NSRunLoop *_voiceWaveRunLoop;
     CGFloat _stopAnimationRatio;//松手后避免音量过大，波纹振幅大，乘以衰减系数
     
     BOOL _isStopAnimating;//正在进行消失动画
+    
+    UIBezierPath *_firstLayerPath;
+    UIBezierPath *_secondLayerPath;
 }
 
 - (void)dealloc
@@ -261,18 +264,24 @@ static NSRunLoop *_voiceWaveRunLoop;
         _stopAnimationRatio = fmax(_stopAnimationRatio, 0.01);
     }
     
-    UIBezierPath *firstLayerPath = [self generateBezierPathWithFrequency:_frequency1 maxAmplitude:_maxAmplitude phase:_phase1 lineCenter:&_lineCenter1];
-    UIBezierPath *secondLayerPath = [self generateBezierPathWithFrequency:_frequency2 maxAmplitude:_maxAmplitude*0.8 phase:_phase2 + 3 lineCenter:&_lineCenter2];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _firstShapeLayer.path = firstLayerPath.CGPath;
-        _secondShapeLayer.path = secondLayerPath.CGPath;
-        if (firstLayerPath && secondLayerPath) {
-            UIBezierPath *fillPath = [UIBezierPath bezierPathWithCGPath:firstLayerPath.CGPath];
-            [fillPath appendPath:secondLayerPath];
-            [fillPath closePath];
-            _fillShapeLyer.path = fillPath.CGPath;
-        }
-    });
+    _firstLayerPath = nil;
+    _secondLayerPath = nil;
+    _firstLayerPath = [self generateBezierPathWithFrequency:_frequency1 maxAmplitude:_maxAmplitude phase:_phase1 lineCenter:&_lineCenter1];
+    _secondLayerPath = [self generateBezierPathWithFrequency:_frequency2 maxAmplitude:_maxAmplitude*0.8 phase:_phase2 + 3 lineCenter:&_lineCenter2];
+    
+    [self performSelectorOnMainThread:@selector(updateShapeLayerPath) withObject:nil waitUntilDone:NO];
+}
+
+- (void)updateShapeLayerPath
+{
+    _firstShapeLayer.path = _firstLayerPath.CGPath;
+    _secondShapeLayer.path = _secondLayerPath.CGPath;
+    if (_firstLayerPath && _secondLayerPath) {
+        UIBezierPath *fillPath = [UIBezierPath bezierPathWithCGPath:_firstLayerPath.CGPath];
+        [fillPath appendPath:_secondLayerPath];
+        [fillPath closePath];
+        _fillShapeLyer.path = fillPath.CGPath;
+    }
 }
 
 #pragma mark - CAAnimationDelegate
