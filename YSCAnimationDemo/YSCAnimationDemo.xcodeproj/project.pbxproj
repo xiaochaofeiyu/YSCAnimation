@@ -17,7 +17,6 @@
 		1AED83251D6A899B009A80CE /* YSCAnimationDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83241D6A899B009A80CE /* YSCAnimationDemoUITests.m */; };
 		1AED83391D6A8AAF009A80CE /* YSCAnimationDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83341D6A8AAF009A80CE /* YSCAnimationDemoViewController.m */; };
 		1AED833A1D6A8AAF009A80CE /* YSCLayerAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83361D6A8AAF009A80CE /* YSCLayerAnimationViewController.m */; };
-		1AED83411D6A8D66009A80CE /* tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1AED83401D6A8D66009A80CE /* tree.jpg */; };
 		1AED83441D6AA24F009A80CE /* YSCRippleAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83431D6AA24F009A80CE /* YSCRippleAnimationViewController.m */; };
 		1AED834A1D6AA455009A80CE /* YSCWaveAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83491D6AA455009A80CE /* YSCWaveAnimationViewController.m */; };
 		1AED83AA1D6C76D7009A80CE /* YSCMaskAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83A91D6C76D7009A80CE /* YSCMaskAnimationViewController.m */; };
@@ -56,6 +55,7 @@
 		1AED84251D6EE310009A80CE /* YSCButterflyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED84241D6EE310009A80CE /* YSCButterflyViewController.m */; };
 		1AED84281D6EE558009A80CE /* butterfly1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED84261D6EE558009A80CE /* butterfly1.png */; };
 		1AED84291D6EE558009A80CE /* butterfly2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AED84271D6EE558009A80CE /* butterfly2.png */; };
+		E1660EC81D8D55BE008D3334 /* tree.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1660EC71D8D55BE008D3334 /* tree.jpg */; };
 		E1B2702F1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B2702E1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m */; };
 		E1B270331D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B270321D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.m */; };
 		E1B270371D72D89200A41480 /* YSCMatrixCircleAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B270361D72D89200A41480 /* YSCMatrixCircleAnimationView.m */; };
@@ -101,7 +101,6 @@
 		1AED83341D6A8AAF009A80CE /* YSCAnimationDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCAnimationDemoViewController.m; sourceTree = "<group>"; };
 		1AED83351D6A8AAF009A80CE /* YSCLayerAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCLayerAnimationViewController.h; sourceTree = "<group>"; };
 		1AED83361D6A8AAF009A80CE /* YSCLayerAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCLayerAnimationViewController.m; sourceTree = "<group>"; };
-		1AED83401D6A8D66009A80CE /* tree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tree.jpg; sourceTree = "<group>"; };
 		1AED83421D6AA24F009A80CE /* YSCRippleAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCRippleAnimationViewController.h; sourceTree = "<group>"; };
 		1AED83431D6AA24F009A80CE /* YSCRippleAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCRippleAnimationViewController.m; sourceTree = "<group>"; };
 		1AED83481D6AA455009A80CE /* YSCWaveAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCWaveAnimationViewController.h; sourceTree = "<group>"; };
@@ -162,6 +161,7 @@
 		1AED84241D6EE310009A80CE /* YSCButterflyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCButterflyViewController.m; sourceTree = "<group>"; };
 		1AED84261D6EE558009A80CE /* butterfly1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = butterfly1.png; sourceTree = "<group>"; };
 		1AED84271D6EE558009A80CE /* butterfly2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = butterfly2.png; sourceTree = "<group>"; };
+		E1660EC71D8D55BE008D3334 /* tree.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tree.jpg; sourceTree = "<group>"; };
 		E1B2702D1D72D1A800A41480 /* YSCReplicatorAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCReplicatorAnimationViewController.h; sourceTree = "<group>"; };
 		E1B2702E1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCReplicatorAnimationViewController.m; sourceTree = "<group>"; };
 		E1B270311D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCCircleReplicatorAnimationViewController.h; sourceTree = "<group>"; };
@@ -361,8 +361,8 @@
 				1AED84191D6EDB03009A80CE /* fire.png */,
 				1AED84261D6EE558009A80CE /* butterfly1.png */,
 				1AED84271D6EE558009A80CE /* butterfly2.png */,
+				E1660EC71D8D55BE008D3334 /* tree.jpg */,
 				1AED841B1D6EE0FC009A80CE /* music.png */,
-				1AED83401D6A8D66009A80CE /* tree.jpg */,
 				1AED84031D6DCE13009A80CE /* fanshaped.jpg */,
 			);
 			path = Resource;
@@ -645,6 +645,7 @@
 				1AED84291D6EE558009A80CE /* butterfly2.png in Resources */,
 				1AED841A1D6EDB03009A80CE /* fire.png in Resources */,
 				1AED830A1D6A899B009A80CE /* Main.storyboard in Resources */,
+				E1660EC81D8D55BE008D3334 /* tree.jpg in Resources */,
 				1AED83C31D6D434A009A80CE /* fill.png in Resources */,
 				1AED83C21D6D434A009A80CE /* circleBackground.png in Resources */,
 				1AED841C1D6EE0FC009A80CE /* music.png in Resources */,
@@ -652,7 +653,6 @@
 				1AED83D21D6D4420009A80CE /* microPhone_top@2x.png in Resources */,
 				1AED83D01D6D4420009A80CE /* microPhone_bottom@2x.png in Resources */,
 				1AED83D11D6D4420009A80CE /* microPhone_bottom@3x.png in Resources */,
-				1AED83411D6A8D66009A80CE /* tree.jpg in Resources */,
 				1AED83D31D6D4420009A80CE /* microPhone_top@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

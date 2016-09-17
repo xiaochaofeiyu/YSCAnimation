@@ -10,8 +10,6 @@
 
 @interface YSCLayerAnimationViewController ()
 
-
-
 @end
 
 @implementation YSCLayerAnimationViewController
