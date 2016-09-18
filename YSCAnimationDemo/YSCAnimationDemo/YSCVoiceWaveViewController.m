@@ -11,6 +11,8 @@
 #import "YSCVoiceWaveView.h"
 #import "YSCVoiceLoadingCircleView.h"
 
+#import "YSCNewVoiceWaveView.h"
+
 @interface YSCVoiceWaveViewController ()
 
 @property (nonatomic, strong) AVAudioRecorder *recorder;
@@ -19,6 +21,9 @@
 @property (nonatomic, strong) YSCVoiceLoadingCircleView *loadingView;
 @property (nonatomic, strong) NSTimer *updateVolumeTimer;
 @property (nonatomic, strong) UIButton *voiceWaveShowButton;
+
+@property (nonatomic, strong) YSCNewVoiceWaveView *voiceWaveViewNew;
+@property (nonatomic,strong) UIView *voiceWaveParentViewNew;
 @end
 
 @implementation YSCVoiceWaveViewController
@@ -41,6 +46,9 @@
     [self.voiceWaveView showInParentView:self.voiceWaveParentView];
     [self.voiceWaveView startVoiceWave];
     
+    [self.view insertSubview:self.voiceWaveParentViewNew atIndex:1];
+    [self.voiceWaveViewNew showInParentView:self.voiceWaveParentViewNew];
+    [self.voiceWaveViewNew startVoiceWave];
     
     [[NSRunLoop currentRunLoop] addTimer:self.updateVolumeTimer forMode:NSRunLoopCommonModes];
     
@@ -57,6 +65,8 @@
     [self.recorder updateMeters];
     CGFloat normalizedValue = pow (10, [self.recorder averagePowerForChannel:0] / 20);
     [_voiceWaveView changeVolume:normalizedValue];
+    
+    [_voiceWaveViewNew changeVolume:normalizedValue];
 }
 
 - (void)voiceWaveShowButtonTouched:(UIButton *)sender
@@ -119,17 +129,38 @@
         self.voiceWaveParentView = [[UIView alloc] init];
         CGSize screenSize = [UIScreen mainScreen].bounds.size;
         _voiceWaveParentView.frame = CGRectMake(0, 0, screenSize.width, 320);
-        _voiceWaveParentView.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
+//        _voiceWaveParentView.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
     }
     
     return _voiceWaveParentView;
+}
+
+- (YSCNewVoiceWaveView *)voiceWaveViewNew
+{
+    if (!_voiceWaveViewNew) {
+        self.voiceWaveViewNew = [[YSCNewVoiceWaveView alloc] init];
+    }
+    
+    return _voiceWaveViewNew;
+}
+
+- (UIView *)voiceWaveParentViewNew
+{
+    if (!_voiceWaveParentViewNew) {
+        self.voiceWaveParentViewNew = [[UIView alloc] init];
+        CGSize screenSize = [UIScreen mainScreen].bounds.size;
+        _voiceWaveParentViewNew.frame = CGRectMake(0, 330, screenSize.width, 320);
+//        _voiceWaveParentViewNew.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
+    }
+    
+    return _voiceWaveParentViewNew;
 }
 
 - (YSCVoiceLoadingCircleView *)loadingView
 {
     if (!_loadingView) {
         CGSize screenSize = [UIScreen mainScreen].bounds.size;
-        CGPoint loadViewCenter = CGPointMake(screenSize.width / 2.0, screenSize.height / 2.0);
+        CGPoint loadViewCenter = CGPointMake(screenSize.width / 2.0, 160);
         self.loadingView = [[YSCVoiceLoadingCircleView alloc] initWithCircleRadius:25 center:loadViewCenter];
     }
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A46E6A41D7D8AC000C11542 /* YSCNewVoiceWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A46E6A31D7D8AC000C11542 /* YSCNewVoiceWaveView.m */; };
 		1AED83011D6A899B009A80CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83001D6A899B009A80CE /* main.m */; };
 		1AED83041D6A899B009A80CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83031D6A899B009A80CE /* AppDelegate.m */; };
 		1AED83071D6A899B009A80CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83061D6A899B009A80CE /* ViewController.m */; };
@@ -81,6 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A46E6A21D7D8AC000C11542 /* YSCNewVoiceWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YSCNewVoiceWaveView.h; path = voiceWave/YSCNewVoiceWaveView.h; sourceTree = "<group>"; };
+		1A46E6A31D7D8AC000C11542 /* YSCNewVoiceWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YSCNewVoiceWaveView.m; path = voiceWave/YSCNewVoiceWaveView.m; sourceTree = "<group>"; };
 		1AED82FC1D6A899B009A80CE /* YSCAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSCAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AED83001D6A899B009A80CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1AED83021D6A899B009A80CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -202,6 +205,8 @@
 		1A46E6491D7823DC00C11542 /* water wave */ = {
 			isa = PBXGroup;
 			children = (
+				1AED83E21D6D8E7F009A80CE /* YSCWaterWaveViewController.h */,
+				1AED83E31D6D8E7F009A80CE /* YSCWaterWaveViewController.m */,
 			);
 			name = "water wave";
 			sourceTree = "<group>";
@@ -259,8 +264,6 @@
 				1AED83431D6AA24F009A80CE /* YSCRippleAnimationViewController.m */,
 				1A46E64A1D7823E100C11542 /* voice wave */,
 				1A46E6491D7823DC00C11542 /* water wave */,
-				1AED83E21D6D8E7F009A80CE /* YSCWaterWaveViewController.h */,
-				1AED83E31D6D8E7F009A80CE /* YSCWaterWaveViewController.m */,
 				1A46E64E1D7823F300C11542 /* seawater */,
 				E1B270301D72D2E200A41480 /* replicator */,
 				1AED84221D6EE23F009A80CE /* emitter */,
@@ -396,6 +399,8 @@
 				1AED83D51D6D4482009A80CE /* YSCVoiceLoadingCircleView.m */,
 				1AED83D61D6D4482009A80CE /* YSCVoiceWaveView.h */,
 				1AED83D71D6D4482009A80CE /* YSCVoiceWaveView.m */,
+				1A46E6A21D7D8AC000C11542 /* YSCNewVoiceWaveView.h */,
+				1A46E6A31D7D8AC000C11542 /* YSCNewVoiceWaveView.m */,
 				1AED83D81D6D4482009A80CE /* YSCVolumeQueue.h */,
 				1AED83D91D6D4482009A80CE /* YSCVolumeQueue.m */,
 			);
@@ -680,6 +685,7 @@
 			files = (
 				1AED83CB1D6D43D4009A80CE /* YSCMicrophoneWaveView.m in Sources */,
 				1AED83AA1D6C76D7009A80CE /* YSCMaskAnimationViewController.m in Sources */,
+				1A46E6A41D7D8AC000C11542 /* YSCNewVoiceWaveView.m in Sources */,
 				1AED84181D6ED78E009A80CE /* YSCEmitterAnimationViewController.m in Sources */,
 				1AED83E41D6D8E7F009A80CE /* YSCWaterWaveViewController.m in Sources */,
 				E1B2702F1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m in Sources */,
