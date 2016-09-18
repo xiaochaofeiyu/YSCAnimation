@@ -14,6 +14,11 @@
 
 @implementation YSCLayerAnimationViewController
 
+- (void)dealloc
+{
+    NSLog(@"");
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -23,8 +28,8 @@
     CALayer *subLayer = [[CALayer alloc] init];
     subLayer.position = CGPointMake(50, 100);
     subLayer.bounds = CGRectMake(0, 0, 30, 30);
-    subLayer.delegate = self;
-    
+//    subLayer.delegate = self;
+    subLayer.backgroundColor = [UIColor blueColor].CGColor;
     subLayer.masksToBounds = YES;
     subLayer.cornerRadius = 15;
     
