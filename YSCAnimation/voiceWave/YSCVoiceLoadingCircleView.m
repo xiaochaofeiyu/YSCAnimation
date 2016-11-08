@@ -3,7 +3,7 @@
 //  MISVoiceSearchLib
 //
 //  Created by yushichao on 16/8/15.
-//  Copyright © 2016年 yuanhanguang. All rights reserved.
+//  Copyright © 2016年 yushichao. All rights reserved.
 //
 
 #define voiceCircleLayerWidth (3 * _voiceCircleRadius)
