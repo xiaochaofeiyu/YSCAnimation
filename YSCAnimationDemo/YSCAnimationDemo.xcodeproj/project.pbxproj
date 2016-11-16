@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		1A46E6A41D7D8AC000C11542 /* YSCNewVoiceWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A46E6A31D7D8AC000C11542 /* YSCNewVoiceWaveView.m */; };
+		1A6D92C71DDC584700B5E5F6 /* YSCHeartBeatPulseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A6D92C61DDC584700B5E5F6 /* YSCHeartBeatPulseViewController.m */; };
 		1AD551511DD1CD5600B3EDCD /* YSCloadGifViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD551501DD1CD5600B3EDCD /* YSCloadGifViewController.m */; };
 		1AD5515B1DD1D1F400B3EDCD /* sw3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1AD5515A1DD1D1F400B3EDCD /* sw3.gif */; };
 		1AD551601DD1D27600B3EDCD /* YSCGifLoadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5515D1DD1D27600B3EDCD /* YSCGifLoadImage.m */; };
 		1AD551611DD1D27600B3EDCD /* YSCGifLoadImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD5515F1DD1D27600B3EDCD /* YSCGifLoadImageView.m */; };
+		1AD551651DD1FBB700B3EDCD /* YSCHeartBeatPulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD551641DD1FBB700B3EDCD /* YSCHeartBeatPulseView.m */; };
 		1AED83011D6A899B009A80CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83001D6A899B009A80CE /* main.m */; };
 		1AED83041D6A899B009A80CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83031D6A899B009A80CE /* AppDelegate.m */; };
 		1AED83071D6A899B009A80CE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED83061D6A899B009A80CE /* ViewController.m */; };
@@ -88,6 +90,8 @@
 /* Begin PBXFileReference section */
 		1A46E6A21D7D8AC000C11542 /* YSCNewVoiceWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YSCNewVoiceWaveView.h; path = voiceWave/YSCNewVoiceWaveView.h; sourceTree = "<group>"; };
 		1A46E6A31D7D8AC000C11542 /* YSCNewVoiceWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YSCNewVoiceWaveView.m; path = voiceWave/YSCNewVoiceWaveView.m; sourceTree = "<group>"; };
+		1A6D92C51DDC584700B5E5F6 /* YSCHeartBeatPulseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCHeartBeatPulseViewController.h; sourceTree = "<group>"; };
+		1A6D92C61DDC584700B5E5F6 /* YSCHeartBeatPulseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCHeartBeatPulseViewController.m; sourceTree = "<group>"; };
 		1AD5514F1DD1CD5600B3EDCD /* YSCloadGifViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCloadGifViewController.h; sourceTree = "<group>"; };
 		1AD551501DD1CD5600B3EDCD /* YSCloadGifViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCloadGifViewController.m; sourceTree = "<group>"; };
 		1AD5515A1DD1D1F400B3EDCD /* sw3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = sw3.gif; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 		1AD5515D1DD1D27600B3EDCD /* YSCGifLoadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCGifLoadImage.m; sourceTree = "<group>"; };
 		1AD5515E1DD1D27600B3EDCD /* YSCGifLoadImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCGifLoadImageView.h; sourceTree = "<group>"; };
 		1AD5515F1DD1D27600B3EDCD /* YSCGifLoadImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCGifLoadImageView.m; sourceTree = "<group>"; };
+		1AD551631DD1FBB700B3EDCD /* YSCHeartBeatPulseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSCHeartBeatPulseView.h; sourceTree = "<group>"; };
+		1AD551641DD1FBB700B3EDCD /* YSCHeartBeatPulseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSCHeartBeatPulseView.m; sourceTree = "<group>"; };
 		1AED82FC1D6A899B009A80CE /* YSCAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YSCAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AED83001D6A899B009A80CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1AED83021D6A899B009A80CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -280,8 +286,18 @@
 				1AED84221D6EE23F009A80CE /* emitter */,
 				1AED83F11D6DBA87009A80CE /* maskAnimation */,
 				1AD5514E1DD1CD0F00B3EDCD /* LoadGif */,
+				1A6D92C41DDC57FD00B5E5F6 /* heartBeatPulse */,
 			);
 			name = "Demo controller";
+			sourceTree = "<group>";
+		};
+		1A6D92C41DDC57FD00B5E5F6 /* heartBeatPulse */ = {
+			isa = PBXGroup;
+			children = (
+				1A6D92C51DDC584700B5E5F6 /* YSCHeartBeatPulseViewController.h */,
+				1A6D92C61DDC584700B5E5F6 /* YSCHeartBeatPulseViewController.m */,
+			);
+			name = heartBeatPulse;
 			sourceTree = "<group>";
 		};
 		1AD551461DD1C0F800B3EDCD /* Utility */ = {
@@ -317,6 +333,15 @@
 				1AD5515A1DD1D1F400B3EDCD /* sw3.gif */,
 			);
 			name = LoadGif;
+			sourceTree = "<group>";
+		};
+		1AD551621DD1FB7000B3EDCD /* heartBeatPulse */ = {
+			isa = PBXGroup;
+			children = (
+				1AD551631DD1FBB700B3EDCD /* YSCHeartBeatPulseView.h */,
+				1AD551641DD1FBB700B3EDCD /* YSCHeartBeatPulseView.m */,
+			);
+			path = heartBeatPulse;
 			sourceTree = "<group>";
 		};
 		1AED82F31D6A899B009A80CE = {
@@ -400,6 +425,7 @@
 				1AED83E51D6D9D10009A80CE /* seaWaterWave */,
 				E1B270341D72D66D00A41480 /* replicator */,
 				1AD551521DD1D16000B3EDCD /* LoadGif */,
+				1AD551621DD1FB7000B3EDCD /* heartBeatPulse */,
 			);
 			name = YSCAnimation;
 			path = ../../YSCAnimation;
@@ -739,6 +765,7 @@
 				1A46E6A41D7D8AC000C11542 /* YSCNewVoiceWaveView.m in Sources */,
 				1AED84181D6ED78E009A80CE /* YSCEmitterAnimationViewController.m in Sources */,
 				1AED83E41D6D8E7F009A80CE /* YSCWaterWaveViewController.m in Sources */,
+				1A6D92C71DDC584700B5E5F6 /* YSCHeartBeatPulseViewController.m in Sources */,
 				E1B2702F1D72D1A800A41480 /* YSCReplicatorAnimationViewController.m in Sources */,
 				E1B270331D72D39900A41480 /* YSCCircleReplicatorAnimationViewController.m in Sources */,
 				E1B2703D1D72EB8800A41480 /* YSCCircleRippleViewController.m in Sources */,
@@ -759,6 +786,7 @@
 				1AED83441D6AA24F009A80CE /* YSCRippleAnimationViewController.m in Sources */,
 				1AED83B81D6D3348009A80CE /* YSCFanshapedViewController.m in Sources */,
 				1AED83ED1D6D9D10009A80CE /* YSCSeaGLView.m in Sources */,
+				1AD551651DD1FBB700B3EDCD /* YSCHeartBeatPulseView.m in Sources */,
 				1AED83E11D6D8E02009A80CE /* YSCWaterWaveView.m in Sources */,
 				1AED840B1D6DD390009A80CE /* YSCCircleLoadAnimationViewController.m in Sources */,
 				1AD551611DD1D27600B3EDCD /* YSCGifLoadImageView.m in Sources */,
