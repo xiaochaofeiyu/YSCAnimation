@@ -277,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				1A46E64D1D7823EB00C11542 /* custom */,
+				1A6D92C41DDC57FD00B5E5F6 /* heartBeatPulse */,
 				1A46E64C1D7823E800C11542 /* custom wave */,
 				1A46E64B1D7823E400C11542 /* ripple */,
 				1A46E64A1D7823E100C11542 /* voice wave */,
@@ -286,7 +287,6 @@
 				1AED84221D6EE23F009A80CE /* emitter */,
 				1AED83F11D6DBA87009A80CE /* maskAnimation */,
 				1AD5514E1DD1CD0F00B3EDCD /* LoadGif */,
-				1A6D92C41DDC57FD00B5E5F6 /* heartBeatPulse */,
 			);
 			name = "Demo controller";
 			sourceTree = "<group>";

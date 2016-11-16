@@ -15,12 +15,12 @@
 @end
 
 @implementation YSCHeartBeatPulseView {
-    CGFloat _density;
-    CGFloat _halfWaveLength;
+    CGFloat _density;//x轴绘制粒度，也可用其控制速度
+    CGFloat _halfWaveLength;//半波长
     CGFloat _waveHeight;
     CGFloat _beginX;
-    NSInteger _currentTimeCount;
-    NSInteger _maxTimeCount;
+    NSInteger _currentTimeCount;//当前时间计数
+    NSInteger _maxTimeCount;//最大时间计数，超过后wave开始移动
     CGFloat _currentWaveWidth;
 }
 
@@ -78,6 +78,7 @@
     _currentTimeCount++;
     self.pulseShapeLayer.path = [self generateBezierPathWithTimeCount:_currentTimeCount].CGPath;
     
+    //移动wave
     if (_currentTimeCount > _maxTimeCount) {
         self.bounds = CGRectMake(_density * (_currentTimeCount - _maxTimeCount), 0, self.frame.size.width, self.frame.size.height);
     }
@@ -112,13 +113,14 @@
     return pulselinePath;
 }
 
+// 获取正弦波振幅，第一个半波振幅最大，第二个比较小，其余的很小，每6个半波数循环一次
 - (CGFloat)getAmplitude:(CGFloat)x
 {
     CGFloat amplitude = 0.0;
     NSInteger XOffset = (x - _beginX) / _halfWaveLength;
     XOffset = XOffset % 6;
     if (0 == XOffset) {
-        amplitude = arc4random() % 50 + 150;
+        amplitude = arc4random() % 50 + _waveHeight * 0.5 - 50;
     } else if (1 == XOffset) {
         amplitude = arc4random() % 10 + 10;
     } else {

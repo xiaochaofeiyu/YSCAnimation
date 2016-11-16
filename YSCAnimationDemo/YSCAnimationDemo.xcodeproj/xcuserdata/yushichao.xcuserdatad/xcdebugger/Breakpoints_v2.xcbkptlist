@@ -196,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../YSCAnimation/heartBeatPulse/YSCHeartBeatPulseView.m"
-            timestampString = "500982290.95397"
+            timestampString = "500990773.991992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "-generateBezierPathWithTimeCount:"
             landmarkType = "7">
          </BreakpointContent>
@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../YSCAnimation/heartBeatPulse/YSCHeartBeatPulseView.m"
-            timestampString = "500982290.95397"
+            timestampString = "500990773.991992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-generateBezierPathWithTimeCount:"
             landmarkType = "7">
          </BreakpointContent>

@@ -12,6 +12,8 @@
 @interface YSCHeartBeatPulseViewController ()
 
 @property (nonatomic, strong) YSCHeartBeatPulseView *heartBeatPulseView;
+@property (nonatomic, strong) UIButton *startButton;
+@property (nonatomic, strong) UIButton *pauseButton;
 
 @end
 
@@ -21,21 +23,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.heartBeatPulseView = [[YSCHeartBeatPulseView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 300)];
-    _heartBeatPulseView.center = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0);
-    [self.view addSubview:_heartBeatPulseView];
-    
+
+    [self.view addSubview:self.heartBeatPulseView];
+    [self.view addSubview:self.startButton];
+    [self.view addSubview:self.pauseButton];
+}
+
+- (void)startHeartBaet:(UIButton *)sender
+{
     [_heartBeatPulseView startHeartBeat];
-    [_heartBeatPulseView setHeartBeatSpeed:2];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_heartBeatPulseView pauseHeartBeat];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [_heartBeatPulseView startHeartBeat];
-        });
-    });
+}
+
+- (void)pauseHeartBaet:(UIButton *)sender
+{
+    [_heartBeatPulseView pauseHeartBeat];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -49,14 +50,42 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - getters
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (YSCHeartBeatPulseView *)heartBeatPulseView
+{
+    if (!_heartBeatPulseView) {
+        self.heartBeatPulseView = [[YSCHeartBeatPulseView alloc] initWithFrame:CGRectMake(0, 80, self.view.bounds.size.width, 300)];
+        [_heartBeatPulseView setHeartBeatSpeed:2];
+    }
+    
+    return _heartBeatPulseView;
 }
-*/
+
+- (UIButton *)startButton
+{
+    if (!_startButton) {
+        self.startButton = [[UIButton alloc] initWithFrame:CGRectMake(50, 450, 80, 40)];
+        [_startButton setTitle:@"start" forState:UIControlStateNormal];
+        [_startButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_startButton addTarget:self action:@selector(startHeartBaet:) forControlEvents:UIControlEventTouchUpInside];
+        [_startButton setBackgroundColor:[UIColor blueColor]];
+    }
+    
+    return _startButton;
+}
+
+- (UIButton *)pauseButton
+{
+    if (!_pauseButton) {
+        self.pauseButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 450, 80, 40)];
+        [_pauseButton setTitle:@"pause" forState:UIControlStateNormal];
+        [_pauseButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_pauseButton addTarget:self action:@selector(pauseHeartBaet:) forControlEvents:UIControlEventTouchUpInside];
+        [_pauseButton setBackgroundColor:[UIColor blueColor]];
+    }
+    
+    return _pauseButton;
+}
 
 @end
