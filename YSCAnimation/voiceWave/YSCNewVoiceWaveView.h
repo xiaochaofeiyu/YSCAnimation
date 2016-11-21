@@ -21,6 +21,13 @@ typedef void (^YSCShowLoadingCircleCallback)(void);
 - (void)showInParentView:(UIView *)parentView;
 
 /**
+ *  设置波纹个数，默认两个
+ *
+ *  @param waveNumber                 波纹个数
+ */
+- (void)setVoiceWaveNumber:(NSInteger)waveNumber;
+
+/**
  *  开始声波动画
  */
 - (void)startVoiceWave;

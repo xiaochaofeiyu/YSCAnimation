@@ -139,6 +139,7 @@
 {
     if (!_voiceWaveViewNew) {
         self.voiceWaveViewNew = [[YSCNewVoiceWaveView alloc] init];
+        [_voiceWaveViewNew setVoiceWaveNumber:6];
     }
     
     return _voiceWaveViewNew;

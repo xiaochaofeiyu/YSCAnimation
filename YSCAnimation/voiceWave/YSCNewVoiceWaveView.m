@@ -9,25 +9,19 @@
 #import "YSCNewVoiceWaveView.h"
 #import "YSCVolumeQueue.h"
 
-@interface YSCNewVoiceWaveView ()
+@interface YSCNewVoiceWaveView ()<CAAnimationDelegate>
 
 @property (nonatomic, strong) CADisplayLink *displayLink;
-//@property (nonatomic, copy) YSCShowLoadingCircleCallback showLoadingCircleCallback;
-
-@property (nonatomic, strong) CAShapeLayer *firstShapeLayer;
-@property (nonatomic, strong) CAShapeLayer *secondShapeLayer;
-@property (nonatomic, strong) CAShapeLayer *fillShapeLyer;
-
-@property (nonatomic, strong) UIImageView *firstLine;
-@property (nonatomic, strong) UIImageView *secondLine;
-@property (nonatomic, strong) UIImageView *fillLayerImage;
 
 @property (nonatomic, strong) YSCVolumeQueue *volumeQueue;
 
 @property (nonatomic, strong) UIImageView *selfViewMaskImage;
+
+@property (nonatomic, assign) NSInteger waveNumber;
 @end
 
-#define voiceWaveDisappearDuration 0.25
+const static CGFloat voiceWaveDisappearDuration = 0.25;
+const static NSInteger defaultWaveNumber = 5;
 
 static NSRunLoop *_voiceWaveRunLoop;
 
@@ -40,6 +34,7 @@ static NSRunLoop *_voiceWaveRunLoop;
     CGFloat _waveWidth;
     CGFloat _waveMid;
     CGFloat _maxAmplitude;//最大振幅
+    CGFloat _mainWaveWidth;//主波纹线宽，其他波纹是它的一半，也可自定义
     
     CGFloat _phase1;//firstLine相位
     CGFloat _phase2;//secondLine相位
@@ -60,10 +55,9 @@ static NSRunLoop *_voiceWaveRunLoop;
     CGFloat _stopAnimationRatio;//松手后避免音量过大，波纹振幅大，乘以衰减系数
     
     BOOL _isStopAnimating;//正在进行消失动画
-    
-    UIBezierPath *_firstLayerPath;
-    UIBezierPath *_secondLayerPath;
-    UIBezierPath *_fillPath;
+
+    NSMutableArray<UIBezierPath *> *_waveLinePathArray;
+    NSLock *_lock;
 }
 
 - (void)dealloc
@@ -112,6 +106,10 @@ static NSRunLoop *_voiceWaveRunLoop;
     _stopAnimationRatio = 1.0;
     
     [_volumeQueue cleanQueue];
+    _mainWaveWidth = 2;
+    _waveNumber = _waveNumber > 0 ? _waveNumber : defaultWaveNumber;
+    _waveLinePathArray = [NSMutableArray array];
+    _lock = [[NSLock alloc] init];
 }
 
 - (void)voiceWaveThreadEntryPoint:(id)__unused object
@@ -152,23 +150,12 @@ static NSRunLoop *_voiceWaveRunLoop;
     self.frame = CGRectMake(0, parentView.bounds.size.height * 0.25, parentView.bounds.size.width, parentView.bounds.size.height * 0.5);
     [self setup];
     
-//    [self addSubview:self.firstLine];
-//    _firstLine.frame = self.bounds;
-//    CGFloat firstLineWidth = 5 / [UIScreen mainScreen].scale;
-//    self.firstShapeLayer = [self generateShapeLayerWithLineWidth:firstLineWidth];
-//    _firstLine.layer.mask = _firstShapeLayer;
-//    
-//    [self addSubview:self.secondLine];
-//    _secondLine.frame = self.bounds;
-//    CGFloat secondLineWidth = 4 / [UIScreen mainScreen].scale;
-//    self.secondShapeLayer = [self generateShapeLayerWithLineWidth:secondLineWidth];
-//    _secondLine.layer.mask = _secondShapeLayer;
-//    
-//    [self addSubview:self.fillLayerImage];
-//    _fillLayerImage.frame = self.bounds;
-//    _fillLayerImage.layer.mask = self.fillShapeLyer;
-    
     [self updateMeters];
+}
+
+- (void)setVoiceWaveNumber:(NSInteger)waveNumber
+{
+    _waveNumber = waveNumber;
 }
 
 - (void)startVoiceWave
@@ -264,30 +251,24 @@ static NSRunLoop *_voiceWaveRunLoop;
         _stopAnimationRatio = fmax(_stopAnimationRatio, 0.01);
     }
     
-    _firstLayerPath = nil;
-    _secondLayerPath = nil;
-    _firstLayerPath = [self generateBezierPathWithFrequency:_frequency1 maxAmplitude:_maxAmplitude phase:_phase1 lineCenter:&_lineCenter1];
-    _secondLayerPath = [self generateBezierPathWithFrequency:_frequency1 maxAmplitude:_maxAmplitude phase:_phase1 lineCenter:&_lineCenter1];
-//    _secondLayerPath = [self generateBezierPathWithFrequency:_frequency2 maxAmplitude:_maxAmplitude*0.8 phase:_phase2 + 3 lineCenter:&_lineCenter2];
-    
-    _fillPath = [self generateGradientPathWithFrequency:_frequency1 maxAmplitude:_maxAmplitude phase:_phase1 lineCenter:&_lineCenter1 yOffset:2];
-    
-    NSDictionary *dic = @{@"firstPath":_firstLayerPath, @"secondPath":_secondLayerPath};
-    [self performSelectorOnMainThread:@selector(updateShapeLayerPath:) withObject:dic waitUntilDone:NO];
-    
-    
+    [_lock lock];
+    [_waveLinePathArray removeAllObjects];
+    CGFloat waveWidth = _mainWaveWidth;
+    CGFloat progress = 1.0f;
+    CGFloat amplitudeFactor = 1.0f;
+    for (NSInteger i = 0; i < _waveNumber; i++) {
+        waveWidth = i==0 ? _mainWaveWidth : _mainWaveWidth / 2.0;
+        progress = 1.0f - (CGFloat)i / _waveNumber;
+        amplitudeFactor = 1.5f * progress - 0.5f;
+        UIBezierPath *linePath = [self generateGradientPathWithFrequency:_frequency1 maxAmplitude:_maxAmplitude * amplitudeFactor phase:_phase1 lineCenter:&_lineCenter1 yOffset:waveWidth / 2.0];
+        [_waveLinePathArray addObject:linePath];
+    }
+    [_lock unlock];
+    [self performSelectorOnMainThread:@selector(updateShapeLayerPath:) withObject:nil waitUntilDone:NO];
 }
 
 - (void)updateShapeLayerPath:(NSDictionary *)dic
 {
-//    UIBezierPath *firstPath = [dic objectForKey:@"firstPath"];
-//    UIBezierPath *secondPath = [dic objectForKey:@"secondPath"];
-//    if (firstPath && secondPath) {
-//        _fillPath = [UIBezierPath bezierPathWithCGPath:firstPath.CGPath];
-//        [_fillPath appendPath:secondPath];
-//        [_fillPath closePath];
-//    }
-    
     [self setNeedsDisplay];
 }
 
@@ -324,14 +305,19 @@ static NSRunLoop *_voiceWaveRunLoop;
     UIColor *startColor = [UIColor colorWithRed:colorOffset green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
     UIColor *endColor = [UIColor colorWithRed:0.0/255.0 green:1 - colorOffset blue:0.0/255.0 alpha:1.0];
     //绘制渐变
-    if (_fillPath) {
-        [self drawLinearGradient:context path:_fillPath.CGPath startColor:startColor.CGColor endColor:endColor.CGColor];
+    [_lock lock];
+    CGFloat progress = 1.0f;
+    if (_waveLinePathArray.count == _waveNumber && _waveNumber > 0) {
+        for (NSInteger i = 0; i < _waveNumber; i++) {
+            progress = 1.0f - (CGFloat)i / _waveNumber;
+            CGFloat multiplier = MIN(1.0, (progress / 3.0f * 2.0f) + (1.0f / 3.0f));
+            CGFloat colorFactor = i == 0 ? 1.0 : 1.0 * multiplier * 0.4;
+            startColor = [UIColor colorWithRed:colorOffset green:0.0/255.0 blue:0.0/255.0 alpha:colorFactor];
+            endColor = [UIColor colorWithRed:0.0/255.0 green:1 - colorOffset blue:0.0/255.0 alpha:colorFactor];
+            [self drawLinearGradient:context path:_waveLinePathArray[i].CGPath startColor:startColor.CGColor endColor:endColor.CGColor];
+        }
     }
-//    [fillPath appendPath:_secondLayerPath];
-//    [fillPath closePath];
-    
-//    [self drawLinearGradient:context path:fillPath.CGPath startColor:[UIColor greenColor].CGColor endColor:[UIColor redColor].CGColor];
-//    [self drawLinearGradient:context path:_secondLayerPath.CGPath startColor:[UIColor greenColor].CGColor endColor:[UIColor redColor].CGColor];
+    [_lock unlock];
 }
 
 - (void)drawLinearGradient:(CGContextRef)context
@@ -346,9 +332,7 @@ static NSRunLoop *_voiceWaveRunLoop;
     
     CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef) colors, locations);
     
-    
     CGRect pathRect = CGPathGetBoundingBox(path);
-    
     //具体方向可根据需求修改
     CGPoint startPoint = CGPointMake(CGRectGetMinX(pathRect), CGRectGetMidY(pathRect));
     CGPoint endPoint = CGPointMake(CGRectGetMaxX(pathRect), CGRectGetMidY(pathRect));
@@ -431,7 +415,7 @@ static NSRunLoop *_voiceWaveRunLoop;
         else {
             [wavelinePath addLineToPoint:CGPointMake(x, y)];
         }
-        if (fabsf(lineCenter->x - x) < 0.01) {
+        if (fabs(lineCenter->x - x) < 0.01) {
             lineCenter->y = y;
         }
     }
@@ -463,7 +447,7 @@ static NSRunLoop *_voiceWaveRunLoop;
         else {
             [wavelinePath addLineToPoint:CGPointMake(x, y)];
         }
-        if (fabsf(lineCenter->x - x) < 0.01) {
+        if (fabs(lineCenter->x - x) < 0.01) {
             lineCenter->y = y;
         }
     }
@@ -531,57 +515,7 @@ static NSRunLoop *_voiceWaveRunLoop;
 
 #pragma mark - getters
 
-- (UIImageView *)firstLine
-{
-    if (!_firstLine) {
-        self.firstLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"firstLine"]];
-        _firstLine.layer.masksToBounds = YES;
-    }
-    
-    return _firstLine;
-}
-
-- (UIImageView *)secondLine
-{
-    if (!_secondLine) {
-        self.secondLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"secondLine"]];
-        _secondLine.layer.masksToBounds = YES;
-        _secondLine.alpha = 0.6;
-    }
-    
-    return _secondLine;
-}
-
-- (UIImageView *)fillLayerImage
-{
-    if (!_fillLayerImage) {
-        self.fillLayerImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fill"]];
-        _fillLayerImage.layer.masksToBounds = YES;
-        _fillLayerImage.alpha = 0.2;
-    }
-    
-    return _fillLayerImage;
-}
-
-- (CAShapeLayer *)fillShapeLyer
-{
-    if (!_fillShapeLyer) {
-        self.fillShapeLyer = [CAShapeLayer layer];
-        _fillShapeLyer.lineCap = kCALineCapButt;
-        _fillShapeLyer.lineJoin = kCALineJoinRound;
-        _fillShapeLyer.strokeColor = [UIColor clearColor].CGColor;
-        _fillShapeLyer.fillColor = [UIColor redColor].CGColor;
-        _fillShapeLyer.fillRule = @"even-odd";
-        _fillShapeLyer.lineWidth = 2;
-        _fillShapeLyer.backgroundColor = [UIColor clearColor].CGColor;
-//        _fillShapeLyer.position = CGPointMake(CGRectGetWidth(self.bounds) / 2.0, CGRectGetHeight(self.bounds) / 2.0);
-//        _fillShapeLyer.bounds = self.bounds;
-    }
-    
-    return _fillShapeLyer;
-}
-
-- (CAShapeLayer *)selfViewMaskImage
+- (UIImageView *)selfViewMaskImage
 {
     if (!_selfViewMaskImage) {
         self.selfViewMaskImage = [[UIImageView alloc] init];
