@@ -362,7 +362,7 @@ static NSRunLoop *_voiceWaveRunLoop;
     
     CGRect pathRect = CGPathGetBoundingBox(path);
     CGPoint center = CGPointMake(CGRectGetMidX(pathRect), CGRectGetMidY(pathRect));
-    CGFloat radius = MAX(pathRect.size.width, pathRect.size.height);
+    CGFloat radius = MAX(pathRect.size.width / 2.0, pathRect.size.height / 2.0);
     
     CGContextSaveGState(context);
     CGContextAddPath(context, path);

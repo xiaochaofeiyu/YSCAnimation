@@ -1,5 +1,5 @@
 # YSCAnimation
-
+demo地址：https://github.com/xiaochaofeiyu/YSCAnimation
 ## ripple animation
 1). singlelineripple －－> corresponding class YSCRippleView 
 ```
