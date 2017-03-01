@@ -45,6 +45,10 @@ static NSString * const YSCCellDataClass    = @"YSCCellDataClass";
     [_cellDataArray addObject:@{YSCCellDataName:@"emitter animation", YSCCellDataClass:@"YSCEmitterAnimationViewController"}];
     [_cellDataArray addObject:@{YSCCellDataName:@"replicator animation", YSCCellDataClass:@"YSCReplicatorAnimationViewController"}];
     [_cellDataArray addObject:@{YSCCellDataName:@"loadGif animation", YSCCellDataClass:@"YSCloadGifViewController"}];
+    
+    //add 2017/03/01
+    [_cellDataArray addObject:@{YSCCellDataName:@"carouselTitle animation", YSCCellDataClass:@"YSCCarouselTitleViewController"}];
+    [_cellDataArray addObject:@{YSCCellDataName:@"refreshTable animation", YSCCellDataClass:@"YSCRefreshTableViewController"}];
 }
 
 #pragma mark - Table view data source

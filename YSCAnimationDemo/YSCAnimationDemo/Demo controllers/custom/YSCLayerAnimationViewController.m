@@ -8,7 +8,7 @@
 
 #import "YSCLayerAnimationViewController.h"
 
-@interface YSCLayerAnimationViewController ()
+@interface YSCLayerAnimationViewController ()<CAAnimationDelegate>
 
 @end
 
@@ -105,6 +105,8 @@
         animation.calculationMode = kCAAnimationLinear;
         animation.keyTimes = [NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0], [NSNumber numberWithFloat:0.3], [NSNumber numberWithFloat:1.0], nil];//对于keyValues类型，标识各个value间的起始时间，个数为value数相同（kCAAnimationDiscrete会多一个）；对于path则表示各个线段的起始时间，包括直线或曲线
         animation.delegate = self;//得放在addAnimation:之前，否则代理不会调用
+        animation.timeOffset = 0.0;//动画开始播放的位置，但仍是完整的一个动画。只是开始和结束的位置变了
+        animation.beginTime = CACurrentMediaTime() + 1;
         //存储当前位置在动画结束后使用
         [animation setValue:[NSValue valueWithCGPoint:CGPointMake(350, 100)] forKey:@"AnimationLocation"];
         [animationLayer addAnimation:animation forKey:@"animation-point"];
@@ -155,7 +157,7 @@
     } else {
         NSInteger mode = YSCAnimatinTypeKeyFramePath;
         [self addAnimationToLayerWithMode:mode endPoint:point];
-        animationLayer.beginTime = 1;
+        animationLayer.beginTime = -1;
     }
 }
 
@@ -166,6 +168,8 @@
     CFTimeInterval timeInterval = [animationLayer convertTime:CACurrentMediaTime() fromLayer:nil];
     animationLayer.timeOffset = timeInterval;
     animationLayer.speed = 0;
+    
+    NSLog(@"%f, %f", timeInterval, CACurrentMediaTime());
 }
 
 - (void)resumeAnimation
@@ -175,6 +179,8 @@
     animationLayer.beginTime = CACurrentMediaTime() - animationLayer.timeOffset;//beginTime为本图层相对于父图层的时间，为相对时间；动画时间为当前图层时间 + beginTime，即为当前绝对时间；如在此基础上加1，则动画会往前倒1秒开始显示(此时本图层的开始时间已经超出父图层时间，即绝对时间，相当于动画暂停处的前面一秒)，减一的话就是往后1秒开始显示
     animationLayer.timeOffset = 0;//在当前动画timeOffset后的动画开始显示
     animationLayer.speed = 1;
+    
+    NSLog(@"%f, %f", animationLayer.beginTime, CACurrentMediaTime());
 }
 
 @end

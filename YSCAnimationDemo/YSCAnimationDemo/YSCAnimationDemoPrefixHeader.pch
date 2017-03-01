@@ -1,0 +1,18 @@
+//
+//  YSCAnimationDemoPrefixHeader.pch
+//  YSCAnimationDemo
+//
+//  Created by yushichao on 2017/3/1.
+//  Copyright © 2017年 YSC. All rights reserved.
+//
+
+#ifndef YSCAnimationDemoPrefixHeader_pch
+#define YSCAnimationDemoPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* YSCAnimationDemoPrefixHeader_pch */
+
+
+#import "YSCGlobleMethod.h"
